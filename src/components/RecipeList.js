@@ -11,19 +11,18 @@ function RecipeList() {
     }, [recipeList])
 
     React.useEffect(() => {
-            async function fetchRecipeList() {
-                let response = await fetch(`/recipes`);
-                response = await response.json()
-                setRecipes(response)
-            }
-            fetchRecipeList()
-        },[]);
+        async function fetchRecipeList() {
+            let response = await fetch(`/recipes`);
+            response = await response.json()
+            setRecipes(response)
+        }
+        fetchRecipeList().catch((error) => console.log(error.message));
+    }, []);
 
     async function getRecipes() {
         let response = await fetch(`/recipes`);
-        response = await response.json()
-        setRecipes(response)
-
+        response = await response.json();
+        setRecipes(response);
     }
 
     const openRecipe = (recipe) => {
@@ -39,14 +38,14 @@ function RecipeList() {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ recipe: {recipe} })
+            body: JSON.stringify({ recipe: { recipe } })
         })
         await getRecipes();
     }
 
     const createTable = () => {
         let rows = [];
-        for(var recipe = 0; recipe < recipeList.length; recipe++){
+        for (var recipe = 0; recipe < recipeList.length; recipe++) {
             var Name = recipeList[recipe];
             rows.push(
                 <tr key={recipe}>
@@ -67,19 +66,25 @@ function RecipeList() {
     return (
         <>
             <div className="m-5 form-control d-flex">
-                <table className="table table-hover ">
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {createTable()} 
-                    </tbody>
-                </table>
+                {console.log(recipeList.length)}
+                {recipeList.length === 0
+                    ? <h3 align="center">Recipe list is empty</h3>
+                    :
+                    <table className="table table-hover ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            createTable()
+                        </tbody>
+                    </table>
+                }
+
             </div>
-            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Link to={openRecipe('')}>
                     <button className="btn btn-primary">Add recipe</button>
                 </Link>
