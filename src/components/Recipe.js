@@ -176,7 +176,7 @@ function Recipe(props) {
                 <div className="btn-group" role="group" aria-label="Basic example">
                     <button className="btn btn-primary" key="save" onClick={() => openIngredient(recipe.name, '')}>Add ingredient</button>
                     {/* Redirect to home here */}
-                    <button className="btn btn-primary">Cancel</button>
+                    <button className="btn btn-warning">Cancel</button>
                     <button className="btn btn-primary" key="save" onClick={() => saveRecipe()}>Save</button>
                 </div>
             </div>

@@ -55,7 +55,7 @@ function RecipeList() {
                         </Link>
                     </td>
                     <td className='col-3 td-style'>
-                        <button className="btn btn-primary" key="removeRecope" onClick={() => removeRecipe(Name)}>Remove</button>
+                        <button className="btn btn-danger" key="removeRecope" onClick={() => removeRecipe(Name)}>Remove</button>
                     </td>
                 </tr>
             );
