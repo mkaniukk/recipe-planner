@@ -7,6 +7,7 @@ import RecipeList from "./components/RecipeList";
 import Recipe from "./components/Recipe";
 import Ingredient from "./components/Ingredient";
 import Layout from './components/Layout'
+import ShoppingList from './components/ShoppingList';
 
 function App(props) {
   return (
@@ -17,6 +18,7 @@ function App(props) {
           <Route exact path='/' component={withRouter(RecipeList)} />
           <Route path='/recipe' component={withRouter(Recipe)} />
           <Route path='/getIngredient' component={withRouter(Ingredient)} />
+          <Route path='/shoppingList' component={withRouter(ShoppingList)} />
         </Switch>
       </Layout>
     </BrowserRouter>

@@ -61,6 +61,10 @@ app.get('/getIngredient', async (req, res) => {
         res.json(await getIngredient(req.query.recipe, req.query.ingredient));
 })
 
+app.get('/shoppingList', async (req, res) => {
+    res.json(await getRecipes());
+})
+
 async function getDataFromJson(filename) {
     const fs = require('fs').promises;
 

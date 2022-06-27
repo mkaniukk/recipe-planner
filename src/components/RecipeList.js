@@ -68,7 +68,7 @@ function RecipeList() {
             <div className="m-5 form-control d-flex">
                 {console.log(recipeList.length)}
                 {recipeList.length === 0
-                    ? <h3 align="center">Recipe list is empty</h3>
+                    ? <h3>Recipe list is empty</h3>
                     :
                     <table className="table table-hover ">
                         <thead>
@@ -78,7 +78,7 @@ function RecipeList() {
                             </tr>
                         </thead>
                         <tbody>
-                            createTable()
+                            {createTable()}
                         </tbody>
                     </table>
                 }
