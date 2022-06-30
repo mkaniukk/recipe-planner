@@ -66,7 +66,6 @@ function RecipeList() {
     return (
         <>
             <div className="m-5 form-control d-flex">
-                {console.log(recipeList.length)}
                 {recipeList.length === 0
                     ? <h3>Recipe list is empty</h3>
                     :

@@ -172,11 +172,15 @@ function Recipe(props) {
                     </tbody>
                 </table>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <div className="btn-group" role="group" aria-label="Basic example">
-                    <button className="btn btn-primary" key="save" onClick={() => openIngredient(recipe.name, '')}>Add ingredient</button>
-                    {/* Redirect to home here */}
-                    <button className="btn btn-warning">Cancel</button>
+            <div>
+                <div class="d-flex align-items-center flex-column">
+                    <div className="btn-group justify-content-center" role="group" aria-label="Basic example">
+                        <button className="btn btn-success" key="save" onClick={() => openIngredient(recipe.name, '')}>Add ingredient</button>
+                        {/* Redirect to home here */}
+                        <button className="btn btn-warning">Cancel</button>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end flex-column">
                     <button className="btn btn-primary" key="save" onClick={() => saveRecipe()}>Save</button>
                 </div>
             </div>

@@ -101,22 +101,21 @@ function Ingredient(props) {
     }
 
     return (
-    <div>
-        <div className="form-control m-5 d-flex p-1">
-            <table className="table table-hover">
-                {createIngridient()}
-            </table>
+        <div>
+            <div className="form-control m-5 d-flex p-1">
+                <table className="table table-hover">
+                    {createIngridient()}
+                </table>
+            </div>
+            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+                <div className="btn-group justify-content-center" role="group" aria-label="Basic example">
+                    <button className="btn btn-success" key="save" onClick={() => saveIngredient()}>Add</button>
+                    <Link to={{pathname: 'recipe', state: {recipe: props.location.state.recipe}}}>
+                        <button className="btn  btn-warning">Cancel</button>
+                    </Link>
+                </div>
+            </div>
         </div>
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-            <th colSpan={2}>
-                <Link to={{pathname: 'recipe', state: {recipe: props.location.state.recipe}}}>
-                    <button className="btn  btn-primary">Cancel</button>
-                </Link>
-                |
-                <button className="btn btn-primary" key="save" onClick={() => saveIngredient()}>Save</button>
-            </th>
-        </div>
-    </div>
     );
 }
 
