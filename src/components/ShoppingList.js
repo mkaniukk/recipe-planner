@@ -40,19 +40,6 @@ function ShoppingCart() {
                 {/* } */}
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                {/* <div class="dropdown">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Recipes
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        {recipesList.map((recipe) => (
-                            <a class="dropdown-item">{recipe}</a>
-                        ))}
-                    </div>
-                    {recipesList.map((recipe) => (
-                            console.log(recipe)
-                    ))}
-                </div> */}
                 <DropdownButton id="dropdown-basic-button" title="Recipes">
                     {recipesList.map((recipe) => (
                         <Dropdown.Item href="">{recipe}</Dropdown.Item>

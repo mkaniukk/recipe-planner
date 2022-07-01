@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { NavItem } from 'react-bootstrap';
+import recipe from '../recipe.png'
 
 const Layout = ({ children }) => {
     return (
         <>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <img src={recipe} height="60px"/>
                 <h1 className="display-1">RECIPE PLANNER</h1>
             </div>
             <div>
