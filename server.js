@@ -144,12 +144,12 @@ async function getIngredient(recipe, ingredient) {
         ingredientsData = recipeData['ingredients'][ingredient]
     }
 
-    var ingridient = {
+    var ingredient = {
         "name" : ingredient,
         "data" : ingredientsData,
     }
 
-    return ingridient
+    return ingredient
 }
 
 async function addIngredient(item) {

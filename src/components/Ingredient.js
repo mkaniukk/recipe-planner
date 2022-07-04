@@ -32,29 +32,29 @@ function Ingredient(props) {
             return props.history.push({ pathname: 'getIngredient', state: { recipe: props.location.state.recipe, ingredient: props.location.state.ingredient } });
         }
 
-        var ingridient = {
+        var ingredient = {
             'recipe' : props.location.state.recipe,
             'name' : name,
             'value' : amount.concat(' ', unit)
         }
 
-        await addIngredient(ingridient);
+        await addIngredient(ingredient);
     }
 
-    const addIngredient = async function (ingridient) {
+    const addIngredient = async function (ingredient) {
         await fetch(`/addIngredient`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ item: {editValue: ingridient}})
+            body: JSON.stringify({ item: {editValue: ingredient}})
         }).then(() => {
             props.history.push({ pathname: 'recipe', state: { recipe: props.location.state.recipe }});
         });
     }
 
-    const createIngridient = () => {
+    const createingredient = () => {
         let ing = []
 
         if (ingredient !== undefined && ingredient.length !== 0){
@@ -104,7 +104,7 @@ function Ingredient(props) {
         <div>
             <div className="form-control m-5 d-flex p-1">
                 <table className="table table-hover">
-                    {createIngridient()}
+                    {createingredient()}
                 </table>
             </div>
             <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>

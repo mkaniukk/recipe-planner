@@ -99,10 +99,10 @@ function Recipe(props) {
     }
 
     const createIngredientsTable = () => {
-        let ingridientsTable = []
+        let ingredientsTable = []
         var data = recipe['ingredients'];
         for (let ingredient in data) {
-            ingridientsTable.push(
+            ingredientsTable.push(
                 <tr key={ingredient}>
                     <td>
                         {ingredient}
@@ -119,7 +119,7 @@ function Recipe(props) {
                 </tr>
             );
         }
-        return ingridientsTable
+        return ingredientsTable
     }
 
     return (
@@ -164,7 +164,7 @@ function Recipe(props) {
                                         </tbody>
                                     </>
                                     :
-                                    <span>Ingridients list is empty</span>
+                                    <span>Ingredients list is empty</span>
                                     }   
                                 </table>
                             </td>

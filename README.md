@@ -1,2 +1,2 @@
 # recipe-planner
-React-based app for creating ingridients list for selected recipes.
+React-based app for creating ingredients list for selected recipes.
