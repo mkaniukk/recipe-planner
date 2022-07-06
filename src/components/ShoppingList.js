@@ -150,7 +150,7 @@ function ShoppingCart() {
                 <table className="table table-hover ">
                     <thead>
                         <tr>
-                            <th scope="col">Name</th>
+                            <th scope="col">Recipe</th>
                             <th scope="col">Amount</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -165,7 +165,10 @@ function ShoppingCart() {
                                     {recipe.amount}
                                 </th>
                                 <th>
-                                    <button className="btn btn-danger" onClick={() => removeFromShoppingList(recipe)}>Remove</button>
+                                    <div className="btn-group">
+                                        <button className="btn btn-success" onClick={() => addRecipeToCart(recipe.name)}>+</button>
+                                        <button className="btn btn-danger" onClick={() => removeFromShoppingList(recipe)}>-</button>
+                                    </div>
                                 </th>
                             </tr>
                         ))}

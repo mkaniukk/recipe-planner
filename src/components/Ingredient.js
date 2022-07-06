@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Ingredient(props) {
     const [ingredient, setIngredient] = React.useState('');
@@ -28,14 +28,14 @@ function Ingredient(props) {
         var amount = document.getElementById("Amount").value;
         var unit = document.getElementById("Unit").value;
 
-        if (name === '' || amount === ''  || unit === '') {
+        if (name === '' || amount === '' || unit === '') {
             return props.history.push({ pathname: 'getIngredient', state: { recipe: props.location.state.recipe, ingredient: props.location.state.ingredient } });
         }
 
         var ingredient = {
-            'recipe' : props.location.state.recipe,
-            'name' : name,
-            'value' : amount.concat(' ', unit)
+            'recipe': props.location.state.recipe,
+            'name': name,
+            'value': amount.concat(' ', unit)
         }
 
         await addIngredient(ingredient);
@@ -48,16 +48,16 @@ function Ingredient(props) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ item: {editValue: ingredient}})
+            body: JSON.stringify({ item: { editValue: ingredient } })
         }).then(() => {
-            props.history.push({ pathname: 'recipe', state: { recipe: props.location.state.recipe }});
+            props.history.push({ pathname: 'recipe', state: { recipe: props.location.state.recipe } });
         });
     }
 
     const createingredient = () => {
         let ing = []
 
-        if (ingredient !== undefined && ingredient.length !== 0){
+        if (ingredient !== undefined && ingredient.length !== 0) {
 
             ing.push(
                 <tbody>
@@ -66,7 +66,7 @@ function Ingredient(props) {
                             <label>Recipe:</label>
                         </th>
                         <td >
-                            <textarea className='input-data form-control' readOnly value={props.location.state.recipe}/>
+                            <textarea className='input-data form-control' readOnly value={props.location.state.recipe} />
                         </td>
                     </tr>
                     <tr key='ingredient'>
@@ -74,7 +74,7 @@ function Ingredient(props) {
                             <label>Ingredient:</label>
                         </th>
                         <td>
-                            <textarea className='input-data form-control' id="Name" defaultValue={props.location.state.ingredient}/>
+                            <textarea className='input-data form-control' id="Name" defaultValue={props.location.state.ingredient} />
                         </td>
                     </tr>
                     <tr key='amount'>
@@ -82,7 +82,7 @@ function Ingredient(props) {
                             <label>Amount:</label>
                         </th>
                         <td>
-                            <input className="input-data form-control" type="number" id="Amount" name="Amount" step="0.1" inputMode="decimal" defaultValue={ingredient['data'].split(' ')[0]}/>
+                            <input className="input-data form-control" type="number" id="Amount" name="Amount" step="0.1" inputMode="decimal" defaultValue={ingredient['data'].split(' ')[0]} />
                         </td>
                     </tr>
                     <tr key='unit'>
@@ -90,7 +90,7 @@ function Ingredient(props) {
                             <label>Unit:</label>
                         </th>
                         <td>
-                            <textarea className="input-data form-control" id="Unit" name="Unit" rows="1" cols="50" defaultValue={ingredient['data'].split(' ')[1]}/>
+                            <textarea className="input-data form-control" id="Unit" name="Unit" rows="1" cols="50" defaultValue={ingredient['data'].split(' ')[1]} />
                         </td>
                     </tr>
                 </tbody>
@@ -107,10 +107,10 @@ function Ingredient(props) {
                     {createingredient()}
                 </table>
             </div>
-            <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <div className="btn-group justify-content-center" role="group" aria-label="Basic example">
                     <button className="btn btn-success" key="save" onClick={() => saveIngredient()}>Add</button>
-                    <Link to={{pathname: 'recipe', state: {recipe: props.location.state.recipe}}}>
+                    <Link to={{ pathname: 'recipe', state: { recipe: props.location.state.recipe } }}>
                         <button className="btn  btn-warning">Cancel</button>
                     </Link>
                 </div>

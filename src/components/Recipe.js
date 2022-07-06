@@ -81,7 +81,6 @@ function Recipe(props) {
         }
         else {
             return props.history.push({ pathname: 'getIngredient', state: { recipe, ingredient } })
-                .catch((error) => console.log(error.message));
         }
     };
 
