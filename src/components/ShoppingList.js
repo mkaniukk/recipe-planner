@@ -32,17 +32,17 @@ function ShoppingCart() {
 
     const removeFromShoppingList = (recipe) => {
         // Decrement amount of recipe if repeated
-        for (let r in shoppingList) {
-            if (shoppingList[r]['name'] === recipe.name) {
+        for (let recipeIterator in shoppingList) {
+            if (shoppingList[recipeIterator]['name'] === recipe.name) {
+                removeIngredientsFromList(recipe.ingredients);
                 let newList = shoppingList;
-
                 // Decrement value
-                if (shoppingList[r]['amount'] !== 1) {
-                    newList[r]['amount'] -= 1;
+                if (shoppingList[recipeIterator]['amount'] !== 1) {
+                    newList[recipeIterator]['amount'] -= 1;
 
-                // Delete recipe
+                    // Delete recipe
                 } else {
-                    newList.splice(r, 1);
+                    newList.splice(recipeIterator, 1);
                 }
                 setShoppingList([...newList]);
             }
@@ -51,14 +51,42 @@ function ShoppingCart() {
 
     const addIngredientsToList = (ingredients) => {
         // Add ingridients to list
-        // If ingridient does not exist
-        // And change amount if it does
+        let newList = {...ingredientsList};
         for (let ingredient in ingredients) {
-            if (ingredient in ingredientsList)
-                ingredientsList[ingredient].split(' ')[0] = (parseInt(ingredientsList[ingredient].split(' ')[0]) + parseInt(ingredients[ingredient].split(' ')[0])).toString();
-            else
-                setIngredientsList((ingredientsList) => ({ ...ingredientsList, ...ingredients }));
+                // Change amount if it exists
+            if (ingredient in ingredientsList && compareUnits(ingredientsList[ingredient], ingredients[ingredient])){
+                newList[ingredient] = (parseFloat(ingredientsList[ingredient].split(' ')[0]) + parseFloat(ingredients[ingredient].split(' ')[0])).toString() + " " + ingredientsList[ingredient].split(' ')[1];
+                setIngredientsList({...newList});
+            }else{
+                // If ingridient does not exist
+                newList[ingredient] = ingredients[ingredient];
+            }
         }
+        setIngredientsList({...newList});
+    }
+
+    const removeIngredientsFromList = (ingredients) => {
+        // Add ingridients to list
+        let newList = {...ingredientsList};
+        for (let ingredient in ingredients) {
+                // Change amount if it exists
+            if (ingredient in ingredientsList && compareUnits(ingredientsList[ingredient], ingredients[ingredient])){
+                newList[ingredient] = (parseFloat(ingredientsList[ingredient].split(' ')[0]) - parseFloat(ingredients[ingredient].split(' ')[0])).toString() + " " + ingredientsList[ingredient].split(' ')[1];
+                if((parseFloat(ingredientsList[ingredient].split(' ')[0]) - parseFloat(ingredients[ingredient].split(' ')[0])).toString() === '0')
+                    delete newList[ingredient];
+                else    
+                    setIngredientsList({...newList});
+            }
+        }
+        setIngredientsList({...newList});
+    }
+
+
+    const compareUnits = (first, second) => {
+        if(first.split(' ')[1] === second.split(' ')[1])
+            return true;
+        else
+            return false;
     }
 
     const createIngredientsTable = () => {

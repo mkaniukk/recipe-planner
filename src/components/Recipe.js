@@ -58,10 +58,10 @@ function Recipe(props) {
             },
             body: JSON.stringify({ item: { item } })
         })
-        .then(() => {
-            props.history.push({ pathname: '/' });
-        })
-        .catch((error) => console.log(error.message));;
+            .then(() => {
+                props.history.push({ pathname: '/' });
+            })
+            .catch((error) => console.log(error.message));;
     }
 
     const openIngredient = (recipe, ingredient) => {
@@ -150,22 +150,22 @@ function Recipe(props) {
                             <td>
                                 <table className="table table-hover">
                                     {createIngredientsTable().length !== 0 ?
-                                    <>
-                                        <thead>
-                                            <tr>
-                                                <th scope="col" className='col-4'>Name</th>
-                                                <th scope="col" className='col-3'>Amount</th>
-                                                <th scope="col" className='col-2'>Unit</th>
-                                                <th scope="col" className='col-1'>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {createIngredientsTable()}
-                                        </tbody>
-                                    </>
-                                    :
-                                    <span>Ingredients list is empty</span>
-                                    }   
+                                        <>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" className='col-4'>Name</th>
+                                                    <th scope="col" className='col-3'>Amount</th>
+                                                    <th scope="col" className='col-2'>Unit</th>
+                                                    <th scope="col" className='col-1'>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {createIngredientsTable()}
+                                            </tbody>
+                                        </>
+                                        :
+                                        <span>Ingredients list is empty</span>
+                                    }
                                 </table>
                             </td>
                         </tr>
