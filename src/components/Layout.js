@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { NavItem } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux'
 import { change } from './../features/themeSlice'
+import store from './../store'
 import recipe from '../recipe.png'
 
 const Layout = ({ children }) => {
@@ -25,6 +26,9 @@ const Layout = ({ children }) => {
                     </div>
                     <ul className="navbar-nav ml-auto">
                         <a className="nav-item nav-link" onClick={() => dispatch(change())}>Theme</a>
+                    </ul>
+                    <ul className="navbar-nav ml-auto">
+                        <a className="nav-item nav-link" onClick={() => console.log(store.getState().theme)}>Click Me!</a>
                     </ul>
                 </nav>
             </div>
