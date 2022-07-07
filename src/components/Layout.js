@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { NavItem } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux'
+import { change } from './../features/themeSlice'
 import recipe from '../recipe.png'
 
 const Layout = ({ children }) => {
+
+    const dispatch = useDispatch();
+
     return (
         <>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -19,7 +24,7 @@ const Layout = ({ children }) => {
                         </ul>
                     </div>
                     <ul className="navbar-nav ml-auto">
-                        <a className="nav-item nav-link" href="/">Settings</a>
+                        <a className="nav-item nav-link" onClick={() => dispatch(change())}>Theme</a>
                     </ul>
                 </nav>
             </div>
